@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G436" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Comment" representedClassName=".Comment" syncable="YES">
+        <attribute name="commentDescription" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="taskRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="commentRelationship" inverseEntity="Task"/>
+    </entity>
+    <entity name="Project" representedClassName=".Project" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="projectDescription" optional="YES" attributeType="String"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="taskRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="projectRelationship" inverseEntity="Task"/>
+    </entity>
+    <entity name="Task" representedClassName=".Task" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="taskDescription" optional="YES" attributeType="String"/>
+        <relationship name="commentRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="taskRelationship" inverseEntity="Comment"/>
+        <relationship name="projectRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="taskRelationship" inverseEntity="Project"/>
+    </entity>
+</model>
